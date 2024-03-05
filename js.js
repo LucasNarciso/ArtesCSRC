@@ -1,5 +1,5 @@
 function abreEdicaoModelo(idModelo){
-    window.location.href = 'ArtesCSRC/EditarModelo.html'
+    window.location.href = 'EditarModelo.html'
     console.log('asdasd')
 }
 
