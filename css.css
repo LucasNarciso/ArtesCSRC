@@ -98,6 +98,10 @@ body{
     text-decoration: none;
 }
 
+#Texto_Voltar:hover {
+    cursor: pointer;
+}
+
 .barraCTAs{
     display: flex;
     align-items: center;
@@ -118,9 +122,22 @@ body{
     font-size: 1em;
 }
 
-
-.input-edit-text{
+.input-text{
     background-color: transparent;
-    border: 2px solid black;
+    border: none;
     color: #5B0918;
+    
+    font-family: "Manuale", serif;
+    font-style: normal;
+    box-sizing: border-box;
+}
+
+.input-text-edit{
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+    color: #5B0918;
+
+    font-family: "Manuale", serif;
+    font-style: normal;
+    box-sizing: border-box;
 }

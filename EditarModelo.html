@@ -4,26 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSRC - Artes</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manuale:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css.css">
     <script src="js.js"></script>
 </head>
-<body>
+<body onload="iniciaPaginaEdit()">
     <div id="Container">
         <div id="Navbar">
             <p>CSRC - Artes</p>
         </div>
         <div id="Conteudo">
             <div style="display: flex; width: 100%;">
-                <a id="Texto_Voltar" href="/">< Voltar</a>
+                <p id="Texto_Voltar" onclick="voltarPagina()">< Voltar</p>
             </div>
             <div class="card-edit">
-                <img class="arte-modelo-edit" src="Modelos_thumb/Comunicado_1.png" alt="">
+                <img class="arte-modelo-edit" src="Modelos_thumb/Comunicado_1_EDIT.png" alt="">
                 <p class="nome-modelo-edit">Comunicado 1</p>
             </div>
         </div>
         <div class="barraCTAs">
-            <button onclick="addCamposEdit()">EDITAR</button>
-            <button>GERAR</button>
+            <button id="btnEditar" onclick="editCampos()">EDITAR</button>
+            <button id="btnGerar">GERAR</button>
         </div>
     </div>
 </body>
