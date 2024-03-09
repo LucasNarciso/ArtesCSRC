@@ -1,5 +1,5 @@
 function abreEdicaoModelo(idModelo){
-    window.location.href = 'EditarModelo.html'
+    window.location.href = `EditarModelo.html?modelo=${idModelo}`
     console.log('asdasd')
 }
 
@@ -9,10 +9,10 @@ function voltarPagina(){
 
 function iniciaPaginaEdit() {
     let campos = [
-        {tipo: "texto", nome:"EVENTO", valor:"SANTA MISSA", top:"121", left:"26", width:"180"},
-        {tipo: "texto", nome:"DATA", valor:"Dia 3 de março", top:"145", left:"26", width:"180"},
-        {tipo: "texto", nome:"HORÁRIO", valor:"Às 10:00", top:"166", left:"26", width:"180"},
-        {tipo: "area", nome:"DESCRIÇÃO", valor:"Estamos esperando \n por você!", top:"199", left:"26", width:"180"},
+        {tipo: "texto", nome:"EVENTO", valor:"SANTA MISSA", top:"121", left:"23", width:"180", bold:true, underline:false},
+        {tipo: "texto", nome:"DATA", valor:"Dia 3 de março", top:"145", left:"23", width:"180", bold:false, underline:false},
+        {tipo: "texto", nome:"HORÁRIO", valor:"Às 10:00", top:"166", left:"23", width:"180", bold:false, underline:true},
+        {tipo: "area", nome:"DESCRIÇÃO", valor:"Estamos esperando\npor você!", top:"199", left:"23", width:"180", bold:false, underline:false},
     ];
     addCamposEdit(campos);
 }
@@ -23,11 +23,11 @@ function addCamposEdit(campos){
     campos.forEach(campo => {
         if(campo.tipo == "texto"){
             card.insertAdjacentHTML('afterBegin',`
-                <input class="input-text" type="textarea" name="${campo.nome}" value="${campo.valor}" style="position: absolute; width: ${campo.width}px; top: ${campo.top}px; left: ${campo.left}px; padding: 0px 2px;" disabled></input>
+                <input class="input-text" type="text" name="${campo.nome}" value="${campo.valor}" style="position: absolute; width: ${campo.width}px; top: ${campo.top}px; left: ${campo.left}px; padding: 0px 2px; font-weight: ${campo.bold ? "bold" : "normal"}; text-decoration: ${campo.underline ? "underline" : "none"};" disabled></input>
             `)
         }else{
             card.insertAdjacentHTML('afterBegin',`
-                <textarea class="input-text" type="textarea" name="${campo.nome}" style="position: absolute; top: ${campo.top}px; width: ${campo.width}px; left: ${campo.left}px;" disabled> ${campo.valor} </textarea>
+                <textarea class="input-text" type="textarea" name="${campo.nome}" style="position: absolute; top: ${campo.top}px; width: ${campo.width}px; left: ${campo.left}px; padding: 0px 2px; font-weight: ${campo.bold ? "bold" : "normal"}; text-decoration: ${campo.underline ? "underline" : "none"}; text-wrap: nowrap;" disabled>${campo.valor}</textarea>
             `)
         }
     });
@@ -79,5 +79,55 @@ function concluirEdit(){
 }
 
 function gerarArte(){
-    let elementos = document.querySelectorAll('input, textarea')
+    let elementos = Array.from(document.querySelectorAll('input, textarea'));
+    let urlAPI = "https://script.google.com/macros/s/AKfycbzH8FtTGQIJ-T_LVd9BfkFuGtF8ooFzCEcR5qfPvm6A-0yUEPMyPf-tJ0wr1GldQRR3Lw/exec";
+    let objData;
+
+    objData = elementos.map((el)=>{
+        return {"antes":el.name, "depois":el.value}
+    })
+
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+    };
+
+    mostraLoading()
+
+    var modelo = new URL(window.location.href).searchParams.get("modelo");
+    console.log(`${urlAPI}?action=gerarArte&modelo=${modelo}&textos=${JSON.stringify(objData)}`);
+    fetch(`${urlAPI}?action=gerarArte&modelo=${modelo}&textos=${JSON.stringify(objData)}`, requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+            console.log(result)
+            baixarArte(JSON.parse(result).data)
+        })
+        .catch((error) => {
+            console.error(error)
+            removeLoading();
+        });
+}
+
+function baixarArte(url){
+    document.body.insertAdjacentHTML('afterBegin',`
+        <iframe class="iframe-download" src="${url}" style="position:absolute; opacity: 0;"></iframe>
+    `)
+    setTimeout(() => {
+        document.querySelectorAll('.iframe-download').forEach((ifr)=>{
+            ifr.remove();
+        })
+    }, 5000);
+    removeLoading();
+}
+
+function mostraLoading(){
+    document.body.insertAdjacentHTML('afterBegin',`
+        <div id="DivLoading">
+            <div class="loader"></div>
+        </div>
+    `)
+}
+
+function removeLoading(){
+    document.getElementById('DivLoading').remove();
 }
