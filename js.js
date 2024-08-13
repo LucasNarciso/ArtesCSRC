@@ -128,7 +128,6 @@ function mostraLoading(){
     document.body.insertAdjacentHTML('afterBegin',`
         <div id="DivLoading">
             <div class="loader"></div>
-            <p>Gerando a arte...</p>
         </div>
     `)
 }
