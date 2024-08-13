@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Anek Devanagari", sans-serif;
 }
 
 body{
@@ -81,6 +84,7 @@ body{
     width: 350px;
     height: 350px;
     border: none;
+    z-index: -1;
 }
 .nome-modelo-edit{
     padding: 5px;
@@ -147,6 +151,8 @@ body{
 #DivLoading{
     position: absolute;
     display: flex;
+    flex-direction: column;
+    gap: 15px;
     align-items: center;
     justify-content: center;
     width: 100vw;
@@ -173,3 +179,20 @@ body{
     animation: l3 1s infinite linear;
 }
 @keyframes l3 {to{transform: rotate(1turn)}}
+
+
+.botaoSimples{
+    width: auto;
+    padding: 5px 15px;
+    height: auto;
+    background-color: #DAC9A8;
+    border: none;
+    border-radius: 3px;
+    color: #5B0918;
+    font-size: 1em;
+}
+
+.hoverPadrao:hover{
+    cursor: pointer;
+    filter: brightness(0.8);
+}

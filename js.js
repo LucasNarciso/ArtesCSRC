@@ -62,7 +62,7 @@ function entrarModoEdit(){
     btnEditar.style.display = 'none';
     btnGerar.style.display = 'none';
 
-    document.querySelector('.barraCTAs').insertAdjacentHTML('afterBegin','<button id="btnConcluir" onclick="concluirEdit()"> CONCLUIR </button>')
+    document.querySelector('.barraCTAs').insertAdjacentHTML('afterBegin','<button id="btnConcluir" class="hoverPadrao" onclick="concluirEdit()"> CONCLUIR </button>')
 }
 
 
@@ -117,13 +117,18 @@ function baixarArte(url){
             ifr.remove();
         })
     }, 5000);
-    removeLoading();
+    document.getElementById('DivLoading').innerHTML = `
+        <p> Se o download não começar em instantes, clique <a href="${url}">aqui</a> para baixar. </p>
+        <button onclick="removeLoading()" class="botaoSimples hoverPadrao">Voltar</button>
+    `
+    // removeLoading();
 }
 
 function mostraLoading(){
     document.body.insertAdjacentHTML('afterBegin',`
         <div id="DivLoading">
             <div class="loader"></div>
+            <p>Gerando a arte...</p>
         </div>
     `)
 }
