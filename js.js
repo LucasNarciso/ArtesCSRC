@@ -9,7 +9,7 @@ function voltarPagina(){
 
 function iniciaPaginaEdit() {
     let campos = [
-        {tipo: "texto", nome:"EVENTO", valor:"SANTA MISSA", top:"121", left:"23", width:"180", bold:true, underline:false},
+        {tipo: "texto", nome:"EVENTO", valor:"SANTA MISSA", top:"121", left:"23", width:"250", bold:true, underline:false},
         {tipo: "texto", nome:"DATA", valor:"Dia 3 de março", top:"145", left:"23", width:"180", bold:false, underline:false},
         {tipo: "texto", nome:"HORÁRIO", valor:"Às 10:00", top:"166", left:"23", width:"180", bold:false, underline:true},
         {tipo: "area", nome:"DESCRIÇÃO", valor:"Estamos esperando\npor você!", top:"199", left:"23", width:"180", bold:false, underline:false},
@@ -118,7 +118,7 @@ function baixarArte(url){
         })
     }, 5000);
     document.getElementById('DivLoading').innerHTML = `
-        <p> style="margin: 0px 30px; text-align: center;" Se o download não começar em instantes, clique <a href="${url}">aqui</a> para baixar. </p>
+        <p style="margin: 0px 30px; text-align: center;"> Se o download não começar em instantes, clique <a href="${url}">aqui</a> para baixar. </p>
         <button onclick="removeLoading()" class="botaoSimples hoverPadrao">Voltar</button>
     `
     // removeLoading();
