@@ -1,1 +1,1 @@
-
+Um pequeno gerador de artes para fascilitar a divulgação dos horários dos acontecimentos da comunidade que eu faço parte. Permite que escolha um modelo e edite as informações principais dele para que possa ser gerado e baixado posteriormente.
