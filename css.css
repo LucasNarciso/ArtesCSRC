@@ -7,6 +7,18 @@
     font-family: "Anek Devanagari", sans-serif;
 }
 
+input{
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active{
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: #ffffff00;
+        transition: background-color 5000s ease-in-out 0s;
+        box-shadow: inset 0 0 20px 20px #23232300;
+    }
+}
+
 body{
     width: 100vw;
     height: 100vh;
