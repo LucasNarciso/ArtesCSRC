@@ -118,7 +118,7 @@ function baixarArte(url){
         })
     }, 5000);
     document.getElementById('DivLoading').innerHTML = `
-        <p> Se o download não começar em instantes, clique <a href="${url}">aqui</a> para baixar. </p>
+        <p> style="margin: 0px 30px; text-align: center;" Se o download não começar em instantes, clique <a href="${url}">aqui</a> para baixar. </p>
         <button onclick="removeLoading()" class="botaoSimples hoverPadrao">Voltar</button>
     `
     // removeLoading();
