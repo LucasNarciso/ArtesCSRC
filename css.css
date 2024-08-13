@@ -19,6 +19,22 @@ input{
     }
 }
 
+/* Tentativa de tirar o stilo padrão do autocomplete */
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-image: none !important;
+    background-color: transparent !important;
+    color: fieldtext !important;
+}
+
+/* Tentativa 2 de tirar o stilo padrão do autocomplete */
+input:-internal-autofill-previewed{
+    appearance: menulist-button;
+    background-image: none !important;
+    background-color: transparent !important;
+    color: fieldtext !important;
+}
+
 body{
     width: 100vw;
     height: 100vh;
@@ -144,9 +160,9 @@ body{
 }
 
 .input-text{
-    background-color: transparent;
+    background-color: transparent !important;
     border: none;
-    color: #5B0918;
+    color: #5B0918 !important;
     
     font-family: "Manuale", serif;
     font-style: normal;
